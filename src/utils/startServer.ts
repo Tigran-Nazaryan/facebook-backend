@@ -1,7 +1,9 @@
 import { Express } from "express";
+import dbConnect from "../config/dbConnect"
 
 const startServer = async (app: Express, port: string | number): Promise<void> => {
   try {
+    await dbConnect()
     app.listen(port, () => {
       console.log(`Server started on port ${port}`);
     });
