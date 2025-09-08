@@ -1,26 +1,34 @@
-import dbConfig from "./index.ts";
+import dbConfig from "./index";
 
-const config = {
+type SequelizeConfig = {
+  username: string;
+  password: string;
+  database: string;
+  host: string;
+  dialect: "postgres";
+};
+
+const config: Record<string, SequelizeConfig> = {
   "development": {
     "username": dbConfig.user,
     "password": dbConfig.password,
     "database": dbConfig.database,
     "host": dbConfig.host,
-    "dialect": dbConfig.dialect
+    "dialect": dbConfig.dialect as "postgres"
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "",
     "database": "database_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
-    "password": null,
+    "password": "",
     "database": "database_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "postgres"
   }
 }
 
